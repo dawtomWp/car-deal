@@ -11,6 +11,9 @@
 </template>
 
 <script>
+import {mapState, mapActions} from 'vuex';
+import firebase from 'firebase/compat/app';
+import 'firebase/compat/auth';
 import Navigation from '../src/components/molecules/Navigation.vue';
 import Footer from '../src/components/organisms/Footer.vue';
 
@@ -21,8 +24,16 @@ export default {
     Navigation,
     Footer
   },
+  methods: {
+    ...mapActions(['GET_CURRENT_USER'])
+  },
   created() {
-    
+    firebase.auth().onAuthStateChanged((user) => {
+      this.$store.commit("UPDATE_USER", user)
+      if(user) {
+        this.GET_CURRENT_USER();
+      }
+    })
   },
 }
 </script>

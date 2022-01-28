@@ -1,15 +1,22 @@
 <template>
     <div class="wrapper">
         <div class="left">
-            <h1>Zaloguj się</h1>
+            <h1>New User</h1>
+            <RegisterType/>
             <form >
+                <input v-model="userName" type="text" placeholder="Imię">
+                <input v-model="userLastName" type="text" placeholder="Nazwisko">
                 <input v-model="userEmail" type="text" placeholder="Email lub nazwa użytkownika">
+                <input v-model="userTelephone" type="number" placeholder="Phone Number">
                 <input v-model="userPassword" type="password" placeholder="Hasło">
-                <button @click.prevent="submitLogin" type="submit">Zaloguj się</button>
+
+                 
+                <button @click.prevent="register" type="submit">Zarejestruj</button>
             </form>
+
             
             <p v-show="error">{{errorMsg}}</p>
-            <p>Nie masz konta? <router-link class="link" :to="{name:'RegisterUser'}">Zarejestruj się</router-link></p>
+            <p>Masz już konto? <router-link class="link" :to="{name:'Login'}">Zaloguj się</router-link></p>
         </div>
         <div class="right"></div>
     </div>
@@ -19,34 +26,57 @@
 <script>
 import firebase from 'firebase/compat/app';
 import 'firebase/compat/auth';
+import RegisterType from '../components/molecules/RegisterType.vue';
+import db from '../firebase/firebaseInit'
 
 export default {
     data() {
         return {
+            userName: null,
+            userLastName: null,
             userEmail: null,
             userPassword: null,
             userType: null,
+            userTelephone: null,
             error: null,
-            errorMsg: null
+            errorMsg: null,
+            type: 'user'
         }
+    },
+    components: {
+        RegisterType
     },
     computed: {
 
     },
     methods: {
-        submitLogin() {
-            firebase.auth().signInWithEmailAndPassword(this.userEmail,this.userPassword) 
-                .then(() => {        
-                    this.$router.push({name:'Home'});
-                    this.error = false;
-                    this.errorMsg = "";
+        async register() {
+            if(
+                this.userName !== "" &&
+                this.userLastName !== "" &&
+                this.userEmail !== "" &&
+                this.userPassword !== "" &&
+                this.userPassword.length > 8
+            ) {
+                this.error = false;
+                this.errorMsg = "";
+
+                const firebaseAuth = await firebase.auth();
+                const createUser = await firebaseAuth.createUserWithEmailAndPassword(this.userEmail,this.userPassword);
+                const result = await createUser;
+                const database = db.collection("users").doc(result.user.uid);
+                await database.set({
+                    name: this.userName,
+                    lastname: this.userLastName,
+                    email: this.userEmail,
+                    type: this.type,
+                    phone: this.userTelephone
                 })
-                .catch((err)=>{
-                    this.error = true;
-                    this.errorMsg = "Invalid email or password";
-                    console.log(err);
-                })
-            
+                this.$router.push({name:"Home"});
+                return;
+            }
+            this.error = true;
+            this.errorMsg = "Some fields are empty or password is too short"
         }
     
     }

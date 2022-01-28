@@ -11,7 +11,6 @@
            <p>CarDeals to portal dla sprzedawców, kurierów oraz klientów. 
               Naszym głównym założeniem jest możliwość zakupu pojazdu bez wychodzenia z domu, Nie ważne w jakiej części Polski mieszkasz, dzięki usługom kurierskim twój nowy samochód po potwierdzeniu zgodności opisu ze stanem faktycznym przyjedzie do ciebie.
           </p>
-          <button>Więcej o CarDeals</button>
     </div>
 </template>
 
@@ -28,6 +27,7 @@ export default {
          position:relative;
          flex-direction: column;
          align-items: center;
+         text-align: justify;
          margin: 40px auto;
          padding: 45px;
          button {

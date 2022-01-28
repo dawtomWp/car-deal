@@ -9,7 +9,7 @@ const firebaseConfig = {
     storageBucket: "car-deals-78387.appspot.com",
     messagingSenderId: "357626886168",
     appId: "1:357626886168:web:b4ba32d0c8a8f50ee3eb6d"
-  };
+};
 
 const firebaseApp = firebase.initializeApp(firebaseConfig);
 

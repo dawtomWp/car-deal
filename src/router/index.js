@@ -5,7 +5,11 @@ import Contact from "../views/Contact.vue";
 import Login from "../views/Login.vue";
 import MerchantDetails from "../views/MerchantDetails.vue";
 import MerchantDashboard from "../views/MerchantDashboard.vue";
-import Register from '../views/Register.vue';
+import RegisterUser from '../views/RegisterUser.vue';
+import RegisterCourier from '../views/RegisterCourier.vue';
+import RegisterMerchant from '../views/RegisterMerchant.vue';
+import CourierDashboard from '../views/CourierDashboard.vue';
+import CarDetails from '../views/CarDetails.vue';
 
 const routes = [
   {
@@ -29,9 +33,19 @@ const routes = [
     component: Login,
   },
   {
-    path: "/register",
-    name: "Register",
-    component: Register
+    path: "/register-user",
+    name: "RegisterUser",
+    component: RegisterUser
+  },
+  {
+    path: "/register-merchant",
+    name: "RegisterMerchant",
+    component: RegisterMerchant
+  },
+  {
+    path: "/register-courier",
+    name: "RegisterCourier",
+    component: RegisterCourier
   },
   {
     path: "/merchant/:merchantId",
@@ -43,6 +57,16 @@ const routes = [
     name: "Merchant Dashboard",
     component: MerchantDashboard,
   },
+  {
+    path: "/courier-dashboard",
+    name: "Courier Dashboard",
+    component: CourierDashboard
+  },
+  {
+    path: '/cars/:carId',
+    name: 'Car',
+    component: CarDetails
+  }
 ];
 
 const router = createRouter({

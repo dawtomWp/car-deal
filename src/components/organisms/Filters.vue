@@ -105,6 +105,10 @@ export default {
        position: relative;
        padding: 100px 50px;
        margin: 60px 0;
+         @media(max-width:768px) {
+    padding: 30px 20px;
+    margin: 20px 0;
+  }
 
        h2 {
            color:$primaryTextColor;

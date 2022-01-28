@@ -1,44 +1,69 @@
 <template>
-    <div class="wrapper">
-         <h2 v-if="!SEARCH_MODE"><span>L</span>atest offers</h2>
-         <h2 v-else><span>S</span>earch Result</h2>
+  <div class="wrapper">
+    <h2 v-if="!SEARCH_MODE"><span>L</span>atest offers</h2>
+    <h2 v-else><span>S</span>earch Result</h2>
+
+    <div v-if="ALL_OFFERS.length > 0" class="allOffers">
+      <div v-for="(car, index) in ALL_OFFERS" :key="index">
+        <CarCard :car="car" />
+      </div>
     </div>
+
+  </div>
 </template>
 
 <script>
-import { mapState } from 'vuex'
+import { mapActions, mapState } from "vuex";
+import CarCard from '../molecules/CarCard.vue';
 export default {
-    data() {
-        return {
-            
-        }
-    },
-    computed: {
-        ...mapState(['SEARCH_MODE'])
-    }
-}
+  components: { CarCard },
+  data() {
+    return {};
+  },
+  computed: {
+    ...mapState(["SEARCH_MODE",'ALL_OFFERS']),
+  },
+  methods: {
+    ...mapActions(["GET_ALL_OFFERS"]),
+  },
+  mounted() {
+    this.ALL_OFFERS < 1 && this.GET_ALL_OFFERS();
+  },
+};
 </script>
 
 
 <style lang="scss" scoped>
+@import "@/assets/styles/_variables.scss";
 
-    @import "@/assets/styles/_variables.scss";
+.wrapper {
+  position: relative;
+  width: 80%;
+  padding: 100px 50px;
+  margin: 60px auto;
 
-    .wrapper {     
-       position: relative;
-       max-width:1152px;
-       padding: 100px 50px;
-       margin: 60px auto;
+  @media(max-width:768px) {
+    padding: 30px 20px;
+    margin: 10px auto 30px;
+  }
 
-       h2 {
-           color:$primaryTextColor;
-           text-align:left;
-           font-size:48px;
+  h2 {
+    color: $primaryTextColor;
+    text-align: left;
+    font-size: 48px;
 
-           span {
-               color:#fff;
-               background: $secondaryColor;
-           }
-       }
+    span {
+      color: #fff;
+      background: $secondaryColor;
     }
+  }
+  .allOffers {
+      display: flex;
+      flex-wrap: wrap;
+        @media(max-width:768px) {
+    justify-content: space-around;
+    align-items: center;
+  }
+  }
+}
 </style>
