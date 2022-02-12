@@ -3,6 +3,7 @@
     <form action="">
       <div>
         <select v-model="carBrand" name="" id="" required>
+          <option disabled value="null">Wybierz markę</option>
           <option value="audi">Audi</option>
           <option value="bmw">BMW</option>
           <option value="mercedes">Mercedes</option>
@@ -22,6 +23,7 @@
           <option value="volvo">Volvo</option>
           <option value="chevrolet">Chevrolet</option>
           <option value="dodge">Dodge</option>
+          <option value="citroen">Citroen</option>
         </select>
 
         <input type="text" placeholder="Model" v-model="carModel" />
@@ -29,6 +31,7 @@
 
       <div>
         <select name="" id="" v-model="carBody">
+           <option disabled value="null">Nadwozie</option>
           <option value="sedan">Sedan</option>
           <option value="combi">Kombi</option>
           <option value="coupe">Coupe</option>
@@ -38,6 +41,7 @@
         </select>
 
         <select name="" id="" v-model="carFuel">
+           <option disabled value="null">Paliwo</option>
           <option value="Benzyna">Benzyna</option>
           <option value="LPG">Benzyna + LPG</option>
           <option value="Diesel">Diesel</option>
@@ -103,7 +107,9 @@
         @click.prevent="addCar"
       />
     </form>
+      <p style="color:red; text-align:left; margin-top:10px" v-show="errorMsg">{{errorMsg}}</p>
   </div>
+
 </template>
 
 
@@ -215,10 +221,11 @@ export default {
           carOwnerEmail: this.$store.state.PROFILE_EMAIL,
           forSale: this.forSale,
           saled: this.saled,
+          carLocation: this.$store.state.PROFILE_VOIVODESHIP
         });
         this.resetCreator();
         this.GET_CURRENT_MERCHANT_OFFERS();
-        this.$route.reload();
+        this.$router.push({name:'Home'})
       }
       this.error = true;
       this.errorMsg = "Nie podano wszystkich wymaganych informacji";

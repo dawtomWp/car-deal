@@ -3,12 +3,12 @@
         <!-- <img src="../../assets/images/bannerImg.jpg" alt="" class="bannerImage"> -->
         <div class="bannerImage"></div>
         <div class="bannerText">
-            <h1>Car<span>Deal</span> in numbers</h1>
-            <p v-if="!USER_LOGGED">Become part of our community and browse through hundreds of offers,
-             Sell, buy and get orders. <br> <router-link :to="{name:'Login'}">JOIN NOW</router-link></p>
-            <p v-else>Don't waste your time! Check the latest offers,
+            <h1>Car<span>Deals</span> w liczbach</h1>
+            <p v-if="!USER_LOGGED">Zostać częścią naszej społeczności i szukaj wśród setek ofert,
+             Kupuj sprzedawaj i dostarczaj. <br> <router-link :to="{name:'Login'}">DOŁĄCZ</router-link></p>
+            <p v-else>Nie marnuj czasu! Zaloguj się i sprawdź najnowsze oferty
                 <br>
-                 Sell, buy and get orders.
+                 Kupuj, sprzedawaj i dostarczaj
             </p>
              <div class="cardsWrapper">
                  <NumberCards/>

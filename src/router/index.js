@@ -10,6 +10,9 @@ import RegisterCourier from '../views/RegisterCourier.vue';
 import RegisterMerchant from '../views/RegisterMerchant.vue';
 import CourierDashboard from '../views/CourierDashboard.vue';
 import CarDetails from '../views/CarDetails.vue';
+import ClientDashboard from '../views/ClientDashboard.vue';
+import Checkout from '../views/Checkout.vue';
+import Summary from '../views/Summary.vue'
 
 const routes = [
   {
@@ -58,6 +61,11 @@ const routes = [
     component: MerchantDashboard,
   },
   {
+    path: "/client-dashboard",
+    name: "Client Dashboard",
+    component: ClientDashboard,
+  },
+  {
     path: "/courier-dashboard",
     name: "Courier Dashboard",
     component: CourierDashboard
@@ -66,6 +74,16 @@ const routes = [
     path: '/cars/:carId',
     name: 'Car',
     component: CarDetails
+  },
+  {
+    path: '/checkout/:carId',
+    name: 'Checkout',
+    component: Checkout
+  },
+  {
+    path: '/summary',
+    name: 'Summary',
+    component: Summary
   }
 ];
 

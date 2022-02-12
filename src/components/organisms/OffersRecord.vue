@@ -1,7 +1,7 @@
 <template>
+   <h2 v-if="!SEARCH_MODE"><span>N</span>ajnowsze oferty</h2>
   <div class="wrapper">
-    <h2 v-if="!SEARCH_MODE"><span>L</span>atest offers</h2>
-    <h2 v-else><span>S</span>earch Result</h2>
+  
 
     <div v-if="ALL_OFFERS.length > 0" class="allOffers">
       <div v-for="(car, index) in ALL_OFFERS" :key="index">
@@ -39,8 +39,8 @@ export default {
 .wrapper {
   position: relative;
   width: 80%;
-  padding: 100px 50px;
-  margin: 60px auto;
+  padding: 10px 50px;
+  margin: 0px auto;
 
   @media(max-width:768px) {
     padding: 30px 20px;

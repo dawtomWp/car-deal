@@ -3,14 +3,14 @@
         <div class="wrapper">
          <div class="left">
              
-             <h3>Found Us: </h3>
+             <h3>Znajdź nas: </h3>
              <p>Facebook</p>
              <p>Instagram</p>
              <p>Youtube</p>
          </div>
 
          <div class="middle">
-             <h3>Contact:</h3>
+             <h3>Kontakt:</h3>
              <p>574-843-9220</p>
              <p>431-673-2424</p>
              <p>contact@cardeals.com</p>
@@ -18,10 +18,10 @@
 
          <div class="right">
              <h3>CarDeals</h3>
-                   <router-link class="link" :to="{name:'Home'}">Homepage</router-link>
-                   <router-link class="link" :to="{name:'About'}">About</router-link>
-                   <router-link class="link" :to="{name:'Contact'}">Contact</router-link>
-                   <router-link v-if="!user" class="link" :to="{name:'Login'}">Login</router-link>
+                   <router-link class="link" :to="{name:'Home'}">Home</router-link>
+                   <router-link class="link" :to="{name:'About'}">O nas</router-link>
+                   <router-link class="link" :to="{name:'Contact'}">Kontakt</router-link>
+                   <router-link v-if="!user" class="link" :to="{name:'Login'}">Zaloguj</router-link>
          </div>
          </div>
 

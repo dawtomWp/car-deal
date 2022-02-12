@@ -2,16 +2,16 @@
     <div class="wrapper">
         <div class="card">
             <Icon :link="require('../../assets/icons/user-crown-light.svg')"/>
-            <p>{{ALL_DEALERS_NUM}} <span>Dealers</span> </p>
+            <p>{{ALL_DEALERS_NUM}} <span>Sprzedawców</span> </p>
 
         </div>
         <div class="card">
             <Icon :link="require('../../assets/icons/envelope-regular.svg')"/>
-            <p>{{ALL_OFFERS_NUM}} <span>Offers</span> </p>
+            <p>{{ALL_OFFERS_NUM}} <span>Ofert</span> </p>
         </div>
         <div class="card">
             <Icon :link="require('../../assets/icons/user-alt-light.svg')"/>
-            <p>{{ALL_USERS_NUM}} <span>Users</span> </p>
+            <p>{{ALL_USERS_NUM}} <span>Użytkowników</span> </p>
         </div>
 
     </div>
@@ -49,8 +49,8 @@ export default {
            padding:25px;
            box-shadow: 0px 5px 10px 1px rgba(0, 0, 0, 0.295);
            margin: 10px;
-           justify-content: space-evenly;
-           width:200px;
+           justify-content: space-between;
+           width:250px;
            text-align: left;
            transition: box-shadow .4s;
            cursor:pointer;

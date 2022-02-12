@@ -13,10 +13,7 @@
           <router-link class="link" :to="{ name: 'Home' }"
             >Homepage</router-link
           >
-          <router-link class="link" :to="{ name: 'About' }">O nas</router-link>
-          <router-link class="link" :to="{ name: 'Contact' }"
-            >Kontakt</router-link
-          >
+
           <router-link
             v-if="PROFILE_TYPE === 'merchant'"
             class="link"
@@ -28,6 +25,12 @@
             class="link"
             :to="{ name: 'Courier Dashboard' }"
             >Panel kuriera</router-link
+          >
+          <router-link
+            v-if="PROFILE_TYPE === 'user'"
+            class="link"
+            :to="{ name: 'Client Dashboard' }"
+            >Panel klienta</router-link
           >
           <router-link v-if="!USER_LOGGED" class="link" :to="{ name: 'Login' }"
             >Zaloguj</router-link
@@ -67,6 +70,12 @@
                   :to="{ name: 'Courier Dashboard' }"
                   >Panel</router-link
                 >
+                <router-link
+                  v-if="PROFILE_TYPE === 'user'"
+                  class="link"
+                  :to="{ name: 'Client Dashboard' }"
+                  >Panel</router-link
+                >
               </div>
               <div class="option" @click="logOut">
                 <Icon
@@ -91,10 +100,8 @@
       <!-- MOBILE NAV -->
       <transition name="mobile-nav-animation">
         <ul class="mobile-nav" v-show="mobileNav">
-          <router-link class="link" :to="{ name: 'Home' }">Strona główna</router-link>
-          <router-link class="link" :to="{ name: 'About' }">O nas</router-link>
-          <router-link class="link" :to="{ name: 'Contact' }"
-            >Kontakt</router-link
+          <router-link class="link" :to="{ name: 'Home' }"
+            >Strona główna</router-link
           >
           <router-link
             v-if="PROFILE_TYPE === 'merchant'"
@@ -107,6 +114,12 @@
             class="link"
             :to="{ name: 'Courier Dashboard' }"
             >Panel kuriera</router-link
+          >
+          <router-link
+            v-if="PROFILE_TYPE === 'user'"
+            class="link"
+            :to="{ name: 'Client Dashboard' }"
+            >Panel klienta</router-link
           >
           <router-link v-if="!user" class="link" :to="{ name: 'Login' }"
             >Zaloguj</router-link
@@ -141,6 +154,12 @@
                   v-if="PROFILE_TYPE === 'courier'"
                   class="link"
                   :to="{ name: 'Courier Dashboard' }"
+                  >Panel</router-link
+                >
+                <router-link
+                  v-if="PROFILE_TYPE === 'user'"
+                  class="link"
+                  :to="{ name: 'Client Dashboard' }"
                   >Panel</router-link
                 >
               </div>

@@ -1,6 +1,7 @@
 <template>
   <div class="app-wrapper">
      <div class="app">
+
         <Navigation/>
         <router-view />
         <Footer/>
@@ -22,8 +23,10 @@ export default {
   name: 'app',
   components: {
     Navigation,
-    Footer
+    Footer,
+
   },
+
   methods: {
     ...mapActions(['GET_CURRENT_USER'])
   },

@@ -1,7 +1,7 @@
 <template>
     <div class="wrapper">
         <div class="left">
-            <h1>New User</h1>
+            <h1>Nowy klient</h1>
             <RegisterType/>
             <form >
                 <input v-model="userName" type="text" placeholder="Imię">
@@ -16,7 +16,7 @@
 
             
             <p v-show="error">{{errorMsg}}</p>
-            <p>Masz już konto? <router-link class="link" :to="{name:'Login'}">Zaloguj się</router-link></p>
+            <p style="margin-bottom:10px">Masz już konto? <router-link class="link" :to="{name:'Login'}">Zaloguj się</router-link></p>
         </div>
         <div class="right"></div>
     </div>
@@ -40,6 +40,7 @@ export default {
             userTelephone: null,
             error: null,
             errorMsg: null,
+            bought: [],
             type: 'user'
         }
     },
@@ -70,7 +71,8 @@ export default {
                     lastname: this.userLastName,
                     email: this.userEmail,
                     type: this.type,
-                    phone: this.userTelephone
+                    phone: this.userTelephone,
+                    bought: this.bought
                 })
                 this.$router.push({name:"Home"});
                 return;
@@ -90,12 +92,22 @@ export default {
    .wrapper {
        display: flex;
 
+       @media(max-width:1024px) {
+           flex-direction: column;
+       }
+
        .left {
            flex:1;
            display: flex;
            flex-direction: column;
            align-items: center;
            justify-content: center;
+               h1 {
+        @media(max-width:1024px) {
+            margin-top: 14px;
+        }
+    }
+ 
            & form {
                margin: 30px 0;
 

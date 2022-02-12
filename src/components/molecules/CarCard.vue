@@ -24,16 +24,29 @@
     
     
   </div>
+  <!-- <button style="z-index:1000" @click.prevent="deleteOffer(car)">Usun</button> -->
 </router-link>
+
 
 </template>
 
 
 <script>
+import { mapActions, mapMutations } from 'vuex'
 
 export default {
     name: 'CarCard',
-    props: ['car']
+    props: ['car'],
+
+    methods:{
+        ...mapMutations(['TOGGLE_WARNING_MODAL']),
+        ...mapActions(['DELETE_OFFER']),
+
+        // async deleteOffer (car) {
+        //     console.log(car)
+        //    this.TOGGLE_WARNING_MODAL();
+        // }
+    }
 }
 </script>
 
